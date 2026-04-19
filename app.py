@@ -4,6 +4,7 @@ from loader import dp, bot
 from data.config import ADMINS
 from handlers import setup_handlers
 from database.db import create_table
+from utils.scheduler import setup_scheduler
 from middlewares.register import RegisterMiddleware
 from aiogram.types import BotCommand, BotCommandScopeDefault, BotCommandScopeChat
 
@@ -37,6 +38,9 @@ async def set_commands(bot):
 
 async def main() -> None:
     await create_table()
+    await set_commands(bot)
+
+    setup_scheduler()
 
     # Middleware ulash
     dp.message.middleware(RegisterMiddleware())
