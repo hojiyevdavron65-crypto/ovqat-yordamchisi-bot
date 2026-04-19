@@ -4,4 +4,4 @@ import os
 load_dotenv()
 
 BOT_TOKEN=os.getenv("BOT_TOKEN")
-ADMINS=os.getenv("ADMINS"),split(",")
+ADMINS=os.getenv("ADMINS").split(",")
